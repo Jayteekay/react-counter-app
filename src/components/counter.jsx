@@ -3,35 +3,18 @@ import React, { Component } from "react";
 class Counter extends Component {
   state = {
     count: 1,
-    imageSrc: "https://picsum.photos/200",
-    stateClass: "primary"
-  };
-  styles = {
-    fontSize: 20,
-    fontWeight: "bold"
+    tags: ["tag1", "tag2", "tag3"]
   };
   render() {
     return (
       <React.Fragment>
-        <img src={this.state.imageSrc} />
-        <span style={this.styles} className={this.getBadgeClasses()}>
-          {this.formatCount()}
-        </span>
-        <button>Increment</button>
+        <ul>
+          {this.state.tags.map(tag => (
+            <li key={tag}>{tag}</li>
+          ))}
+        </ul>
       </React.Fragment>
     );
-  }
-  getBadgeClasses() {
-    const { count } = this.state;
-    let classes = "badge m-2 badge-";
-    classes += count === 0 ? "warning" : this.state.stateClass;
-    return classes;
-  }
-
-  formatCount() {
-    const { count } = this.state;
-    this.state.stateClass = "badge-warning";
-    return count !== 0 ? count : "Zero";
   }
 }
 
