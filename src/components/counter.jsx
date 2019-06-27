@@ -2,20 +2,15 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    count: 1,
     tags: [
-      { id: "tag1", name: "tag1" },
-      { id: "tag2", name: "tag2" },
-      { id: "tag3", name: "tag3" }
+      { id: 0, name: "tag1", count: 0 },
+      { id: 1, name: "tag2", count: 0 },
+      { id: 2, name: "tag3", count: 0 }
     ]
   };
-  constructor() {
-    super();
-    this.handleButtonClick = this.handleButtonClick.bind(this);
-  }
-  handleButtonClick() {
-    console.log("You clicked a tag", this);
-  }
+  handleButtonClick = () => {
+    this.tags[id];
+  };
   renderTags() {
     if (this.state.tags.length === 0) return <p>There are no tags!</p>;
 
@@ -23,9 +18,10 @@ class Counter extends Component {
       <ul>
         {this.state.tags.map(tag => (
           <li key={tag.id} className="m-2">
+            <span className="badge badge-primary">{tag.count}</span>
             {tag.name}
             <button
-              onClick={this.handleButtonClick}
+              onClick={() => this.handleButtonClick(tag.id)}
               className="btn btn-success"
             >
               Click
