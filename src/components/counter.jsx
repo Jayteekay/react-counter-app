@@ -9,8 +9,12 @@ class Counter extends Component {
       { id: "tag3", name: "tag3" }
     ]
   };
+  constructor() {
+    super();
+    this.handleButtonClick = this.handleButtonClick.bind(this);
+  }
   handleButtonClick() {
-    console.log("You clicked a tag");
+    console.log("You clicked a tag", this);
   }
   renderTags() {
     if (this.state.tags.length === 0) return <p>There are no tags!</p>;
@@ -18,9 +22,14 @@ class Counter extends Component {
     return (
       <ul>
         {this.state.tags.map(tag => (
-          <li key={tag.id}>
+          <li key={tag.id} className="m-2">
             {tag.name}
-            <button onClick={this.handleButtonClick}>Click</button>
+            <button
+              onClick={this.handleButtonClick}
+              className="btn btn-success"
+            >
+              Click
+            </button>
           </li>
         ))}
       </ul>
